@@ -185,6 +185,77 @@ footer{border-top:1px solid var(--card-brd);padding:44px 0;color:var(--muted);fo
   .case{padding:30px}
 }
 @media(max-width:520px){.stats-grid{grid-template-columns:1fr}}
+/* Slider styles */
+.slider {
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0;
+  border-radius: var(--r);
+  background: var(--card);
+  border: 1px solid var(--card-brd);
+}
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.slide-image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.slide-info {
+  flex: 1;
+}
+.slide-info h3 {
+  margin-bottom: 8px;
+  color: var(--blue);
+}
+.slide-info p {
+  color: var(--muted);
+}
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 10;
+}
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+.slider-btn:hover { background: rgba(0,0,0,0.7); }
+.slider-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.slider-dots .dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.slider-dots .dot.active { background: var(--blue); }
+
 </style>
 </head>
 <body>
@@ -268,30 +339,58 @@ footer{border-top:1px solid var(--card-brd);padding:44px 0;color:var(--muted);fo
     <span class="eyebrow reveal">Proyek Saya</span>
     <h2 class="sec-title reveal">Proyek-Proyek Terkini</h2>
     <p class="sec-sub reveal">Berikut beberapa implementasi sistem yang telah saya bangun untuk meningkatkan efisiensi dan produktivitas organisasi.</p>
-    <div class="cards">
-      <!-- Project 1 -->
-      <div class="card reveal">
-        <div class="frame"><img src="project1.jpg" alt="Memusatkan Jaringan Yayasan Al Masoem" loading="eager"/></div>
-        <h3>Memusatkan Jaringan Yayasan Al Masoem Bandung</h3>
-        <p>Menggabungkan 19 ISP/modem terpisah menjadi satu ISP terpusat dengan pengelolaan oleh satu manajer jaringan, meningkatkan stabilitas dan mengurangi biaya operasional.</p>
+    <div class="slider">
+      <div class="slides">
+        <!-- slide 1 -->
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-image"><img src="project1.jpg" alt="Memusatkan Jaringan Yayasan Al Masoem" loading="eager"></div>
+            <div class="slide-info">
+              <h3>Memusatkan Jaringan Yayasan Al Masoem Bandung</h3>
+              <p>Menggabungkan 19 ISP/modem terpisah menjadi satu ISP terpusat dengan pengelolaan oleh satu manajer jaringan, meningkatkan stabilitas dan mengurangi biaya operasional.</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide 2 -->
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-image"><img src="project2.jpg" alt="Sistem Absensi Face Recognition" loading="eager"></div>
+            <div class="slide-info">
+              <h3>Sistem Absensi Face Recognition 500+ Karyawan</h3>
+              <p>Menerapkan sistem absensi berbasis pengenalan wajah dengan 8 unit absen tersebar di berbagai lokasi, data terpusat ke server HRD untuk monitoring real-time.</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide 3 -->
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-image"><img src="project3.jpg" alt="Sistem Pendaftaran Siswa Baru" loading="eager"></div>
+            <div class="slide-info">
+              <h3>Sistem Pendaftaran Siswa Baru Yayasan Al Masoem</h3>
+              <p>Membangun portal pendaftaran online yang mengintegrasikan pendaftaran, verifikasi dokumen, dan pembayaran secara elektronik, mengurangi waktu proses administrasi.</p>
+            </div>
+          </div>
+        </div>
+        <!-- slide 4 -->
+        <div class="slide">
+          <div class="slide-content">
+            <div class="slide-image"><img src="project4.jpg" alt="Sistem Psikotes Lengkap" loading="eager"></div>
+            <div class="slide-info">
+              <h3>Sistem Psikotes: Gaya Belajar, Holland, Sosiometri, DSC, Masalah Pribadi</h3>
+              <p>Platform psikotes online yang mencakup tes gaya belajar, Holland (RIASEC), sosiometri, DISC, dan assessment masalah pribadi untuk pengembangan diri dan rekrutmen.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- Project 2 -->
-      <div class="card reveal">
-        <div class="frame"><img src="project2.jpg" alt="Sistem Absensi Face Recognition" loading="eager"/></div>
-        <h3>Sistem Absensi Face Recognition 500+ Karyawan</h3>
-        <p>Menerapkan sistem absensi berbasis pengenalan wajah dengan 8 unit absen tersebar di berbagai lokasi, data terpusat ke server HRD untuk monitoring real-time.</p>
-      </div>
-      <!-- Project 3 -->
-      <div class="card reveal">
-        <div class="frame"><img src="project3.jpg" alt="Sistem Pendaftaran Siswa Baru" loading="eager"/></div>
-        <h3>Sistem Pendaftaran Siswa Baru Yayasan Al Masoem</h3>
-        <p>Membangun portal pendaftaran online yang mengintegrasikan pendaftaran, verifikasi dokumen, dan pembayaran secara elektronik, mengurangi waktu proses administrasi.</p>
-      </div>
-      <!-- Project 4 -->
-      <div class="card reveal">
-        <div class="frame"><img src="project4.jpg" alt="Sistem Psikotes Lengkap" loading="eager"/></div>
-        <h3>Sistem Psikotes: Gaya Belajar, Holland, Sosiometri, DSC, Masalah Pribadi</h3>
-        <p>Platform psikotes online yang mencakup tes gaya belajar, Holland (RIASEC), sosiometri, DISC, dan assessment masalah pribadi untuk pengembangan diri dan rekrutmen.</p>
+      <!-- Navigation arrows -->
+      <button class="slider-btn prev" aria-label="Previous slide">&#9664;</button>
+      <button class="slider-btn next" aria-label="Next slide">&#9654;</button>
+      <!-- Dots -->
+      <div class="slider-dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+        <span class="dot" data-slide="3"></span>
       </div>
     </div>
   </div>
@@ -402,6 +501,46 @@ const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){an
 counters.forEach(c=>cio.observe(c));
 function animate(el){const end=+el.dataset.count,suf=el.dataset.suffix||'';let s=0,dur=1400,t0=performance.now();
   function step(t){let p=Math.min((t-t0)/dur,1);let val=Math.floor((1-Math.pow(1-p,3))*end);el.textContent=val+suf;if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+// Slider functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelector('.slides');
+  const prevBtn = document.querySelector('.slider-btn.prev');
+  const nextBtn = document.querySelector('.slider-btn.next');
+  const dots = document.querySelectorAll('.slider-dots .dot');
+  let index = 0;
+  const total = slides.children.length;
+
+  function updateSlider() {
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + total) % total;
+    updateSlider();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % total;
+    updateSlider();
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      index = i;
+      updateSlider();
+    });
+  });
+
+  // Optional auto-slide every 5 seconds
+  setInterval(() => {
+    index = (index + 1) % total;
+    updateSlider();
+  }, 5000);
+});
+
 </script>
 </body>
 </html>
